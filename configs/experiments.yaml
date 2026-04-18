@@ -1,0 +1,65 @@
+global:
+  base_seed: 42
+  max_new_tokens: 512
+  temperature: 0.7             # used for all stochastic sampling
+  n_problems_main: 200         # problems per run in main grid
+  n_problems_final: 500        # problems for final headline result
+  n_problems_tune: 50          # held-out split for threshold tuning
+
+datasets:
+  gsm8k:
+    hf_name: openai/gsm8k
+    hf_config: main
+    split: test
+    answer_type: numeric       # extract number after ####
+
+  math500:
+    hf_name: HuggingFaceH4/MATH-500
+    hf_config: default
+    split: test
+    answer_type: boxed         # extract \boxed{...}
+
+experiment_1_baseline_grid:
+  models:
+    - Qwen2.5-0.5B-Instruct
+    - Qwen2.5-1.5B-Instruct
+    - Qwen2.5-3B-Instruct
+  dataset: gsm8k
+  n_problems: 200
+  bon_n_values: [1, 4, 8, 16, 32, 64]   # 1 = greedy-equivalent (temperature 0 separately)
+  include_greedy: true
+
+experiment_2_uncertainty_probe:
+  models:
+    - Qwen2.5-0.5B-Instruct
+    - Qwen2.5-1.5B-Instruct
+  dataset: gsm8k
+  n_problems: 200
+  probe_k: 4
+  signals:
+    - answer_entropy
+    - token_entropy
+
+experiment_3_adaptive:
+  models:
+    - Qwen2.5-0.5B-Instruct
+    - Qwen2.5-1.5B-Instruct
+  dataset: gsm8k
+  n_problems: 200
+  probe_k: 4
+  n_max: 64
+  n_tune: 50
+  # thresholds are tuned automatically; these are starting points
+  tau_low_init: 0.3
+  tau_high_init: 0.7
+  n_candidates_tau:
+    low: [0.1, 0.2, 0.3, 0.4, 0.5]
+    high: [0.5, 0.6, 0.7, 0.8, 0.9]
+
+experiment_4_crossover:
+  # uses outputs from experiments 1 and 3
+  models:
+    - Qwen2.5-0.5B-Instruct
+    - Qwen2.5-1.5B-Instruct
+    - Qwen2.5-3B-Instruct
+  dataset: gsm8k

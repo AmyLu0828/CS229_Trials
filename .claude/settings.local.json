@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 *)",
+      "Bash(sysctl hw.memsize)",
+      "Bash(awk '{print \"RAM:\", $2/1e9, \"GB\"}')"
+    ]
+  }
+}

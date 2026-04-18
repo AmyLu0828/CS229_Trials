@@ -1,0 +1,21 @@
+models:
+  - name: Qwen2.5-0.5B-Instruct
+    hf_path: Qwen/Qwen2.5-0.5B-Instruct
+    params_billions: 0.5
+    params_count: 494032768   # ~0.5B
+    max_batch_size: 16        # safe batch size on T4
+    notes: "smallest, fastest, most headroom for BoN"
+
+  - name: Qwen2.5-1.5B-Instruct
+    hf_path: Qwen/Qwen2.5-1.5B-Instruct
+    params_billions: 1.5
+    params_count: 1543714816  # ~1.5B
+    max_batch_size: 16
+    notes: "sweet spot for T4"
+
+  - name: Qwen2.5-3B-Instruct
+    hf_path: Qwen/Qwen2.5-3B-Instruct
+    params_billions: 3.0
+    params_count: 3085396992  # ~3B
+    max_batch_size: 4         # tight on T4 with BoN
+    notes: "largest that fits; the 'large model' reference"
