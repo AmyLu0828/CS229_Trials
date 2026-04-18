@@ -34,10 +34,10 @@ import numpy as np
 
 # ── Config ────────────────────────────────────────────────────────────────────
 HF_PATH = "Qwen/Qwen2.5-0.5B-Instruct"
-N_QUESTIONS = 40
-N_MAX = 16                       # samples drawn per question
-K_PROBE = 4                      # probe size for uncertainty
-N_GRID = [1, 2, 4, 8, 16]        # fixed-N points to compare
+N_QUESTIONS = 100
+N_MAX = 32                       # samples drawn per question
+K_PROBE = 8                      # probe size for uncertainty
+N_GRID = [1, 2, 4, 8, 16, 32]    # fixed-N points to compare
 TEMPERATURE = 0.7
 MAX_NEW_TOKENS = 512
 SEED = 42
