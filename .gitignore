@@ -26,3 +26,11 @@ env/
 
 # Results cache (typically regenerated)
 results/cache/
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Vendored third-party benchmarks (large; installed separately)
+external/

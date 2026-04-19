@@ -1,0 +1,7 @@
+Loading env=retail user_strategy=llm user_model=gpt-4o-mini user_provider=openai
+Running 2 tasks. Checkpoint: /Users/amy/Desktop/CS229_trial1/react_r1/logs/smoke-o3mini-med-retail.json
+[OK ] task 1 trial 0    89.6s  reward=1.0
+[FAIL] task 0 trial 0   101.0s  reward=0.0
+============================================================
+Solved 1/2  accuracy=0.500
+Saved: /Users/amy/Desktop/CS229_trial1/react_r1/logs/smoke-o3mini-med-retail.json

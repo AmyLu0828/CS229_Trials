@@ -1,0 +1,14 @@
+{
+  "run_id": "appworld_playbook_gpt54_60",
+  "state_type": "playbook",
+  "benchmark": "appworld",
+  "model": "gpt-5.4",
+  "temperature": 0.0,
+  "max_state_tokens": 50000,
+  "retrieval_k": 5,
+  "playbook_merge_strategy": "llm",
+  "snapshot_interval": 10,
+  "log_dir": "experiments",
+  "eval_only": false,
+  "load_state": null
+}
